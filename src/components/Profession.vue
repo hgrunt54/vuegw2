@@ -3,11 +3,11 @@
     <h1 class="h1">Create a Guild Wars 2 Build</h1>
     <label for="name">Name: </label>
       <input id="name" v-model="build.name" />
-    <label for="sel_prof">Profession: </label>
+    <label for="sel_prof"> Profession: </label>
       <select id="sel_prof" v-model="build.prof">
-          <option disabled value>Please Select One</option>
-          <option value="Mesmer">Mesmer</option>
-          <option value="Necromancer">Necromancer</option>
+        <option disabled value>Please Select One</option>
+        <option value="Mesmer">Mesmer</option>
+        <option value="Necromancer">Necromancer</option>
       </select>
     <p>
         Build Name is: {{ this.build.name }}

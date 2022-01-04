@@ -26,10 +26,10 @@
     <div class="skills_selection" v-show="skillSelection">
         Skill Selections
         <p>
-            <img :src="skills.s1_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s1')" />
-            <img :src="skills.s2_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s2')" />
-            <img :src="skills.s3_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s3')" />
-            <img :src="skills.s4_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s4')" />
+            <img :src="skills.s1_Image" @click="hideSkillSelection(changeSkill, skills.s1)" />
+            <img :src="skills.s2_Image" @click="hideSkillSelection(changeSkill, skills.s2)" />
+            <img :src="skills.s3_Image" @click="hideSkillSelection(changeSkill, skills.s3)" />
+            <img :src="skills.s4_Image" @click="hideSkillSelection(changeSkill, skills.s4)" />
         </p>
     </div>
 
@@ -38,11 +38,11 @@
         <p>Name: {{ buildName }}</p>
         <p>Profession: {{ buildProf }}</p>
         <h2 style="text-align: center;">The Currently Selected Skills are:</h2>
-        <p>Heal: {{ this.skills.heal }}</p>
-        <p>Utility 1: {{ this.skills.utility1 }}</p>
-        <p>Utility 2: {{ this.skills.utility2 }}</p>
-        <p>Utility 3: {{ this.skills.utility3 }}</p>
-        <p>Elite: {{ this.skills.elite }}</p>
+        <p>Heal: {{ skills.heal }}</p>
+        <p>Utility 1: {{ skills.utility1 }}</p>
+        <p>Utility 2: {{ skills.utility2 }}</p>
+        <p>Utility 3: {{ skills.utility3 }}</p>
+        <p>Elite: {{ skills.elite }}</p>
     </div>
 </template>
 
@@ -56,11 +56,11 @@
         data() {
             return {
                 skills: {
-                    heal: 'default',
-                    utility1: 'default',
-                    utility2: 'default',
-                    utility3: 'default',
-                    elite: 'default',
+                    heal: '',
+                    utility1: '',
+                    utility2: '',
+                    utility3: '',
+                    elite: '',
                     img_Heal: require('@/assets/images/skills/default/default_skill.png'),
                     img_Utility1: require('@/assets/images/skills/default/default_skill.png'),
                     img_Utility2: require('@/assets/images/skills/default/default_skill.png'),

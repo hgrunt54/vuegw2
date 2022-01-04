@@ -110,7 +110,7 @@ const utilities = [
         id: 7,
         profession: 'Necromancer',
         name: 'Signet of the Locust',
-        img: require('@/assets/images/skills/mesmer/elites/Signet_of_the_Locust.png')
+        img: require('@/assets/images/skills/necromancer/elites/Signet_of_the_Locust.png')
     },
     {
         id: 8,

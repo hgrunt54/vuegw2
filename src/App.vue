@@ -1,6 +1,6 @@
 <template>
-    <Profession />
-    <Skills />
+    <Profession :buildName="name" v-on:nameUpdate="onNameChange" :buildProf="prof" v-on:profUpdate="onProfChange" />
+    <Skills :buildName="buildName" :buildProf="buildProf"/>
 </template>
 
 <script>
@@ -8,11 +8,25 @@
     import Skills from './components/Skills.vue'
 
 export default {
-  name: 'App',
-  components: {
-      Profession,
-      Skills
-  }
+    name: 'App',
+        components: {
+            Profession,
+            Skills
+        },
+        data() {
+            return {
+                buildName: '',
+                buildProf: '',
+            }
+        },
+        methods: {
+            onNameChange(value) {
+                this.buildName = value
+            },
+            onProfChange(value) {
+                this.buildProf = value
+            }
+        },
 }
 </script>
 

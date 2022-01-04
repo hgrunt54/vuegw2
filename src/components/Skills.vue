@@ -26,14 +26,17 @@
     <div class="skills_selection" v-show="skillSelection">
         Skill Selections
         <p>
-            <img src="@/assets/images/skills/mesmer/utilities/Signet_of_Domination.png" @click="hideSkillSelection(this.changeSkill, 'Signet of Domination')" />
-            <img src="@/assets/images/skills/mesmer/utilities/Signet_of_Illusions.png" @click="hideSkillSelection(this.changeSkill, 'Signet of Illusions')" />
-            <img src="@/assets/images/skills/mesmer/utilities/Signet_of_Inspiration.png" @click="hideSkillSelection(this.changeSkill, 'Signet of Inspiration')" />
-            <img src="@/assets/images/skills/mesmer/utilities/Signet_of_Midnight.png" @click="hideSkillSelection(this.changeSkill, 'Signet of Midnight')" />
+            <img :src="skills.s1_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s1')" />
+            <img :src="skills.s2_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s2')" />
+            <img :src="skills.s3_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s3')" />
+            <img :src="skills.s4_Image" @click="hideSkillSelection('this.changeSkill', 'this.skills.s4')" />
         </p>
     </div>
 
     <div>
+        <h2 style="text-align: center;">The Current Build Is:</h2>
+        <p>Name: {{ buildName }}</p>
+        <p>Profession: {{ buildProf }}</p>
         <h2 style="text-align: center;">The Currently Selected Skills are:</h2>
         <p>Heal: {{ this.skills.heal }}</p>
         <p>Utility 1: {{ this.skills.utility1 }}</p>
@@ -46,6 +49,10 @@
 <script>
     export default {
         name: 'Skills',
+        props: {
+            buildName: String,
+            buildProf: String,
+        },
         data() {
             return {
                 skills: {
@@ -59,13 +66,45 @@
                     img_Utility2: require('@/assets/images/skills/default/default_skill.png'),
                     img_Utility3: require('@/assets/images/skills/default/default_skill.png'),
                     img_Elite: require('@/assets/images/skills/default/default_skill.png'),
+
+                    s1: '',
+                    s1_Image: require('@/assets/images/skills/default/default_skill.png'),
+                    s2: '',
+                    s2_Image: require('@/assets/images/skills/default/default_skill.png'),
+                    s3: 'default',
+                    s3_Image: require('@/assets/images/skills/default/default_skill.png'),
+                    s4: '',
+                    s4_Image: require('@/assets/images/skills/default/default_skill.png'),
                 },
                 skillSelection: false,
-                changeSkill: ""
+                changeSkill: "",
+                clickedSkill: "",
             };
         },
         methods: {
             showSkillSelection(sk) {
+                let prof = this.buildProf;
+                if (prof == 'Mesmer') {
+                    this.skills.s1_Image = skill[0].img;
+                    this.skills.s1 = skill[0].name;
+                    this.skills.s2_Image = skill[1].img;
+                    this.skills.s2 = skill[1].name;
+                    this.skills.s3_Image = skill[2].img;
+                    this.skills.s3 = skill[2].name;
+                    this.skills.s4_Image = skill[3].img;
+                    this.skills.s4 = skill[3].name;
+
+                }
+                else if (prof == 'Necromancer') {
+                    this.skills.s1_Image = skill[4].img;
+                    this.skills.s1 = skill[4].name;
+                    this.skills.s2_Image = skill[5].img;
+                    this.skills.s2 = skill[5].name;
+                    this.skills.s3_Image = skill[6].img;
+                    this.skills.s3 = skill[6].name;
+                    this.skills.s4_Image = skill[7].img;
+                    this.skills.s4 = skill[7].name;
+                }
                 this.skillSelection = true;
                 this.changeSkill = sk;
             },
@@ -75,30 +114,26 @@
                         if (sk == 'heal') {
                             this.skills.heal = skill[i].name;
                             this.skills.img_Heal = skill[i].img;
-                            this.skillSelection = false;
                         }
                         else if (sk == 'utility1') {
                             this.skills.utility1 = skill[i].name;
                             this.skills.img_Utility1 = skill[i].img;
-                            this.skillSelection = false;
                         }
                         else if (sk == 'utility2') {
                             this.skills.utility2 = skill[i].name;
                             this.skills.img_Utility2 = skill[i].img;
-                            this.skillSelection = false;
                         }
                         else if (sk == 'utility3') {
                             this.skills.utility3 = skill[i].name;
                             this.skills.img_Utility3 = skill[i].img;
-                            this.skillSelection = false;
                         }
                         else if (sk == 'elite') {
                             this.skills.elite = skill[i].name;
                             this.skills.img_Elite = skill[i].img;
-                            this.skillSelection = false;
                         }
                     }
                 }
+                return this.skillSelection = false;
             },
         }
     }
@@ -127,7 +162,27 @@
             type: 'utility',
             name: 'Signet of Midnight',
             img: require('@/assets/images/skills/mesmer/utilities/Signet_of_Midnight.png')
-        }
+        },
+        {
+            profession: 'Necromancer',
+            name: 'Plague Signet',
+            img: require('@/assets/images/skills/necromancer/utilities/Plague_Signet.png')
+        },
+        {
+            profession: 'Necromancer',
+            name: 'Signet of Spite',
+            img: require('@/assets/images/skills/necromancer/utilities/Signet_of_Spite.png')
+        },
+        {
+            profession: 'Necromancer',
+            name: 'Signet of the Locust',
+            img: require('@/assets/images/skills/necromancer/utilities/Signet_of_the_Locust.png')
+        },
+        {
+            profession: 'Necromancer',
+            name: 'Signet of Undeath',
+            img: require('@/assets/images/skills/necromancer/utilities/Signet_of_Undeath.png')
+        },
     ];
 </script>
 

@@ -3,6 +3,10 @@
         <button @click='actCreate'>Create Build</button>
         <button @click='actFind'>Find Build</button>
     </div>
+    <div>
+        <p>{{ greeting }}</p>
+        <p>From Flask: {{ flaskGreeting }}</p>
+    </div>
     <div v-if="createActive">
         <create />
     </div>
@@ -21,11 +25,12 @@ export default {
             Create,
             Find,
         },
-        data() {
+        data: function() {
             return {
                 createActive: true,
                 findActive: false,
-
+                greeting: 'Hello, Vue!',
+                flaskGreeting: '',
             }
         },
         methods: {
@@ -37,6 +42,11 @@ export default {
                 this.createActive = false;
                 this.findActive = true;
             }
+        },
+        created: async function () {
+            const routes = await fetch("http://localhost:5000/greeting");
+            const gObject = await routes.json();
+            this.flaskGreeting = gObject.Greeting;
         },
 }
 </script>

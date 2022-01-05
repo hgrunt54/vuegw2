@@ -44,6 +44,9 @@
         <p>Utility 3: {{ skills.utility3 }}</p>
         <p>Elite: {{ skills.elite }}</p>
     </div>
+    <div>
+        <button @click="save">Submit</button>
+    </div>
 </template>
 
 <script>
@@ -53,7 +56,7 @@
             buildName: String,
             buildProf: String,
         },
-        data() {
+        data: function() {
             return {
                 skills: {
                     heal: '',
@@ -134,6 +137,17 @@
                 }
                 return this.skillSelection = false;
             },
+            save() {
+                const t = { bName: this.buildName}
+                fetch("http://localhost:5000/testPost", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                    },
+                    body: JSON.stringify(t)
+                })
+                .then (response => response.json())
+            }
         }
     }
 

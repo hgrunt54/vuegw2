@@ -15,7 +15,7 @@
 <script>
     export default {
         name: 'Profession',
-        data() {
+        data: function() {
             return {
                 name: '',
                 prof: '',

@@ -93,7 +93,6 @@
                     this.skills.s3 = skill[2].name;
                     this.skills.s4_Image = skill[3].img;
                     this.skills.s4 = skill[3].name;
-
                 }
                 else if (prof == 'Necromancer') {
                     this.skills.s1_Image = skill[4].img;

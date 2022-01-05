@@ -1,30 +1,41 @@
 <template>
-    <Profession :buildName="name" v-on:nameUpdate="onNameChange" :buildProf="prof" v-on:profUpdate="onProfChange" />
-    <Skills :buildName="buildName" :buildProf="buildProf"/>
+    <div style="text-align: center; background-color: cadetblue">
+        <button @click='actCreate'>Create Build</button>
+        <button @click='actFind'>Find Build</button>
+    </div>
+    <div v-if="createActive">
+        <Create />
+    </div>
+    <div v-if="findActive">
+        <Find />
+    </div>
 </template>
 
 <script>
-    import Profession from './components/Profession.vue'
-    import Skills from './components/Skills.vue'
+    import Create from './components/Create.vue'
+    import Find from './components/Find.vue'
 
 export default {
     name: 'App',
         components: {
-            Profession,
-            Skills
+            Create,
+            Find,
         },
         data() {
             return {
-                buildName: '',
-                buildProf: '',
+                createActive: true,
+                findActive: false,
+
             }
         },
         methods: {
-            onNameChange(value) {
-                this.buildName = value
+            actCreate() {
+                this.createActive = true;
+                this.findActive = false;
             },
-            onProfChange(value) {
-                this.buildProf = value
+            actFind() {
+                this.createActive = false;
+                this.findActive = true;
             }
         },
 }
@@ -37,6 +48,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

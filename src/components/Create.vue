@@ -1,0 +1,63 @@
+<template>
+    <div>
+        <test />
+    </div>
+    <div>
+        <profession :buildName="name" v-on:nameUpdate="onNameChange" :buildProf="prof" v-on:profUpdate="onProfChange" />
+    </div>
+    <div>
+        <skills :buildName="buildName" :buildProf="buildProf" />
+    </div>
+</template>
+
+<script>
+    import profession from './profession.vue'
+    import skills from './skills.vue'
+
+    export default {
+        name: 'Create',
+        components: {
+            profession,
+            skills,
+        },
+        data() {
+            return {
+                buildName: '',
+                buildProf: '',
+            }
+        },
+        methods: {
+            onNameChange(value) {
+                this.buildName = value
+            },
+            onProfChange(value) {
+                this.buildProf = value
+            }
+        },
+    }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+    h1 {
+        background: lightgray;
+    }
+
+    h3 {
+        margin: 40px 0 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    a {
+        color: #42b983;
+    }
+</style>

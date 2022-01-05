@@ -4,10 +4,10 @@
         <button @click='actFind'>Find Build</button>
     </div>
     <div v-if="createActive">
-        <Create />
+        <create />
     </div>
     <div v-if="findActive">
-        <Find />
+        <find />
     </div>
 </template>
 

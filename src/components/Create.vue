@@ -1,24 +1,21 @@
 <template>
     <div>
-        <test />
+        <Profession :buildName="name" v-on:nameUpdate="onNameChange" :buildProf="prof" v-on:profUpdate="onProfChange" />
     </div>
     <div>
-        <profession :buildName="name" v-on:nameUpdate="onNameChange" :buildProf="prof" v-on:profUpdate="onProfChange" />
-    </div>
-    <div>
-        <skills :buildName="buildName" :buildProf="buildProf" />
+        <Skills :buildName="buildName" :buildProf="buildProf" />
     </div>
 </template>
 
 <script>
-    import profession from './profession.vue'
-    import skills from './skills.vue'
+    import Profession from './Profession.vue'
+    import Skills from './Skills.vue'
 
     export default {
         name: 'Create',
         components: {
-            profession,
-            skills,
+            Profession,
+            Skills,
         },
         data() {
             return {

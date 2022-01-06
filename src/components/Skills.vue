@@ -1,23 +1,28 @@
 <template>
     <div class="Skills">
         <h1>Skills</h1>
-        <button class="heal" value="skill.heal" @click="showSkillSelection('heal')">
+        <button class="tooltip" value="skill.heal" @click="showSkillSelection('heal')">
+            <span class="tooltiptext">{{ skills.heal }}</span>
             <img id="heal" :src="skills.img_Heal" />
             <p>Heal</p>
         </button>
-        <button class="utility" value="skill.utility1" @click="showSkillSelection('utility1')">
+        <button class="tooltip" value="skill.utility1" @click="showSkillSelection('utility1')">
+            <span class="tooltiptext">{{ skills.utility1 }}</span>
             <img id="utility1" :src="skills.img_Utility1" />
             <p>Utility 1</p>
         </button>
-        <button class="utility" value="skill.utility2" @click="showSkillSelection('utility2')">
+        <button class="tooltip" value="skill.utility2" @click="showSkillSelection('utility2')">
+            <span class="tooltiptext">{{ skills.utility2 }}</span>
             <img id="utility2" :src="skills.img_Utility2" />
             <p>Utility 2</p>
         </button>
-        <button class="utility" value="skill.utility3" @click="showSkillSelection('utility3')">
+        <button class="tooltip" value="skill.utility3" @click="showSkillSelection('utility3')">
+            <span class="tooltiptext">{{ skills.utility3 }}</span>
             <img id="utility3" :src="skills.img_Utility3" />
             <p>Utility 3</p>
         </button>
-        <button class="elite" value="skill.elite" @click="showSkillSelection('elite')">
+        <button class="tooltip" value="skill.elite" @click="showSkillSelection('elite')">
+            <span class="tooltiptext">{{ skills.elite }}</span>
             <img id="elite" :src="skills.img_Elite" />
             <p>Elite</p>
         </button>
@@ -25,12 +30,16 @@
 
     <div class="skills_selection" v-show="skillSelection">
         Skill Selections
-        <p>
-            <img :src="skills.s1_Image" @click="hideSkillSelection(changeSkill, skills.s1)" />
-            <img :src="skills.s2_Image" @click="hideSkillSelection(changeSkill, skills.s2)" />
-            <img :src="skills.s3_Image" @click="hideSkillSelection(changeSkill, skills.s3)" />
-            <img :src="skills.s4_Image" @click="hideSkillSelection(changeSkill, skills.s4)" />
-        </p>
+        <ul>
+            <li class="tooltip"><img :src="skills.s1_Image" @click="hideSkillSelection(changeSkill, skills.s1)" />
+                                <span class="tooltiptext">{{ skills.s1 }}</span></li>
+            <li class="tooltip"><img :src="skills.s2_Image" @click="hideSkillSelection(changeSkill, skills.s2)" />
+                                <span class="tooltiptext">{{ skills.s2 }}</span></li>
+            <li class="tooltip"><img :src="skills.s3_Image" @click="hideSkillSelection(changeSkill, skills.s3)" />
+                                <span class="tooltiptext">{{ skills.s3 }}</span></li>
+            <li class="tooltip"><img :src="skills.s4_Image" @click="hideSkillSelection(changeSkill, skills.s4)" />
+                                <span class="tooltiptext">{{ skills.s4 }}</span></li>
+        </ul>
     </div>
 
     <div>
@@ -138,15 +147,27 @@
                 return this.skillSelection = false;
             },
             save() {
-                const t = { bName: this.buildName}
+                const build = {
+                    bName: this.buildName,
+                    bProf: this.buildProf,
+                    bHeal: this.skills.heal,
+                    bUtility1: this.skills.utility1,
+                    bUtility2: this.skills.utility2,
+                    bUtility3: this.skills.utility3,
+                    bElite: this.skills.elite,
+                    bimgHeal: this.skills.img_Heal,
+                    bimgUtility1: this.skills.img_Utility1,
+                    bimgUtility2: this.skills.img_Utility2,
+                    bimgUtility3: this.skills.img_Utility3,
+                    bimgElite: this.skills.img_Elite,
+                }
                 fetch("http://localhost:5000/testPost", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
                     },
-                    body: JSON.stringify(t)
+                    body: JSON.stringify(build)
                 })
-                .then (response => response.json())
             }
         }
     }
@@ -222,5 +243,31 @@
     .skillsSelect {
         visibility: hidden !important;
         position: relative;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+    /* Tooltip text */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 100px;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -50px;
+            background-color: #008080;
+            color: white;
+            text-shadow: 2px 2px 5px black;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+        }
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
     }
 </style>

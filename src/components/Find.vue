@@ -16,28 +16,28 @@
         <th>Utility 2 </th>
         <th>Utility 3 </th>
         <th>Elite </th>
-        <tr>
-            <td class="seps">{{ Name }}</td>
-            <td class="seps">{{ Prof }}</td>
+        <tr v-for="td in tds" :key="td">
+            <td class="seps">{{ td.Name }}</td>
+            <td class="seps">{{ td.Prof }}</td>
             <td>
-                <img :src="imgHeal" />
-                <p>{{ Heal }}</p>
+                <img :src="td.imgHeal" alt="None"/>
+                <p>{{ td.Heal }}</p>
             </td>
             <td>
-                <img :src="imgUtility1" />
-                <p>{{ Utility1 }}</p>
+                <img :src="td.imgUtility1" alt="None"/>
+                <p>{{ td.Utility1 }}</p>
             </td>
             <td>
-                <img :src="imgUtility2" />
-                <p>{{ Utility2 }}</p>
+                <img :src="td.imgUtility2" alt="None"/>
+                <p>{{ td.Utility2 }}</p>
             </td>
             <td>
-                <img :src="imgUtility3" />
-                <p>{{ Utility3 }}</p>
+                <img :src="td.imgUtility3" alt="None"/>
+                <p>{{ td.Utility3 }}</p>
             </td>
             <td>
-                <img :src="imgElite" />
-                <p>{{ Elite }}</p>
+                <img :src="td.imgElite" />
+                <p>{{ td.Elite }}</p>
             </td>
         </tr>
     </table>
@@ -49,19 +49,21 @@
         data() {
             return {
                 build: {},
-                Name: '',
-                Prof: '',
-                Heal: '',
-                Utility1: '',
-                Utility2: '',
-                Utility3: '',
-                Elite: '',
-
-                imgHeal: require('@/assets/images/skills/default/default_skill.png'),
-                imgUtility1: require('@/assets/images/skills/default/default_skill.png'),
-                imgUtility2: require('@/assets/images/skills/default/default_skill.png'),
-                imgUtility3: require('@/assets/images/skills/default/default_skill.png'),
-                imgElite: require('@/assets/images/skills/default/default_skill.png'),
+                td: {
+                    Name: '',
+                    Prof: '',
+                    Heal: '',
+                    Utility1: '',
+                    Utility2: '',
+                    Utility3: '',
+                    Elite: '',
+                    imgHeal: require('@/assets/images/skills/default/default_skill.png'),
+                    imgUtility1: require('@/assets/images/skills/default/default_skill.png'),
+                    imgUtility2: require('@/assets/images/skills/default/default_skill.png'),
+                    imgUtility3: require('@/assets/images/skills/default/default_skill.png'),
+                    imgElite: require('@/assets/images/skills/default/default_skill.png'),
+                },
+                tds: []
             }
         },
         created: async function () {
@@ -71,19 +73,22 @@
         },
         methods: {
             showResults() {
-                this.Name = this.build.bName;
-                this.Prof = this.build.bProf;
-                this.Heal = this.build.bHeal;
-                this.Utility1 = this.build.bUtility1;
-                this.Utility2 = this.build.bUtility2;
-                this.Utility3 = this.build.bUtility3;
-                this.Elite = this.build.bElite;
-
-                this.imgHeal = this.build.bimgHeal
-                this.imgUtility1 = this.build.bimgUtility1
-                this.imgUtility2 = this.build.bimgUtility2
-                this.imgUtility3 = this.build.bimgUtility3
-                this.imgElite = this.build.bimgElite
+                this.tds = [
+                    {
+                        Name: this.build.bName,
+                        Prof: this.build.bProf,
+                        Heal: this.build.bHeal,
+                        Utility1: this.build.bUtility1,
+                        Utility2: this.build.bUtility2,
+                        Utility3: this.build.bUtility3,
+                        Elite: this.build.bElite,
+                        imgHeal: this.build.bimgHeal,
+                        imgUtility1: this.build.bimgUtility1,
+                        imgUtility2: this.build.bimgUtility2,
+                        imgUtility3: this.build.bimgUtility3,
+                        imgElite: this.build.bimgElite,
+                    }
+                ];
             },
         },
     }
@@ -123,9 +128,5 @@
     th {
         border-bottom-style: solid;
         border-bottom-color: cadetblue;
-    }
-    .seps {
-        border-right-style: groove;
-        border-right-color: cadetblue;
     }
 </style>

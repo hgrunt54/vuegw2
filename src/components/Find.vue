@@ -16,7 +16,7 @@
         <th>Utility 2 </th>
         <th>Utility 3 </th>
         <th>Elite </th>
-        <tr v-for="td in tds" :key="td">
+        <tr>
             <td class="seps">{{ td.Name }}</td>
             <td class="seps">{{ td.Prof }}</td>
             <td>
@@ -70,25 +70,16 @@
             const routes = await fetch("http://localhost:5000/buildQuery");
             const gObject = await routes.json();
             this.build = gObject;
+            console.log(this.build);
+            
         },
         methods: {
             showResults() {
-                this.tds = [
-                    {
-                        Name: this.build.bName,
-                        Prof: this.build.bProf,
-                        Heal: this.build.bHeal,
-                        Utility1: this.build.bUtility1,
-                        Utility2: this.build.bUtility2,
-                        Utility3: this.build.bUtility3,
-                        Elite: this.build.bElite,
-                        imgHeal: this.build.bimgHeal,
-                        imgUtility1: this.build.bimgUtility1,
-                        imgUtility2: this.build.bimgUtility2,
-                        imgUtility3: this.build.bimgUtility3,
-                        imgElite: this.build.bimgElite,
-                    }
-                ];
+                let b = this.build;
+                console.log(b);
+                for (let i = 0; i < b.length; i++) {
+                    console.log(b[i]);
+                }
             },
         },
     }

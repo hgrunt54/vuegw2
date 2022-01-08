@@ -161,7 +161,7 @@
                     bimgUtility3: this.skills.img_Utility3,
                     bimgElite: this.skills.img_Elite,
                 }
-                fetch("http://localhost:5000/testPost", {
+                fetch("http://localhost:5000/buildCreate", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',

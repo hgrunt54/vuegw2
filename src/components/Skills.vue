@@ -68,11 +68,11 @@
         data: function() {
             return {
                 skills: {
-                    heal: '',
-                    utility1: '',
-                    utility2: '',
-                    utility3: '',
-                    elite: '',
+                    heal: "",
+                    utility1: "",
+                    utility2: "",
+                    utility3: "",
+                    elite: "",
                     img_Heal: require('@/assets/images/skills/default/default_skill.png'),
                     img_Utility1: require('@/assets/images/skills/default/default_skill.png'),
                     img_Utility2: require('@/assets/images/skills/default/default_skill.png'),
@@ -148,19 +148,20 @@
             },
             save() {
                 const build = {
-                    bName: this.buildName,
-                    bProf: this.buildProf,
-                    bHeal: this.skills.heal,
-                    bUtility1: this.skills.utility1,
-                    bUtility2: this.skills.utility2,
-                    bUtility3: this.skills.utility3,
-                    bElite: this.skills.elite,
-                    bimgHeal: this.skills.img_Heal,
-                    bimgUtility1: this.skills.img_Utility1,
-                    bimgUtility2: this.skills.img_Utility2,
-                    bimgUtility3: this.skills.img_Utility3,
-                    bimgElite: this.skills.img_Elite,
+                    "bName": this.buildName,
+                    "bProf": this.buildProf,
+                    "bHeal": this.skills.heal,
+                    "bUtility1": this.skills.utility1,
+                    "bUtility2": this.skills.utility2,
+                    "bUtility3": this.skills.utility3,
+                    "bElite": this.skills.elite,
+                    "bimgHeal": this.skills.img_Heal,
+                    "bimgUtility1": this.skills.img_Utility1,
+                    "bimgUtility2": this.skills.img_Utility2,
+                    "bimgUtility3": this.skills.img_Utility3,
+                    "bimgElite": this.skills.img_Elite,
                 }
+                console.log(build);
                 fetch("http://localhost:5000/buildCreate", {
                     method: 'POST',
                     headers: {

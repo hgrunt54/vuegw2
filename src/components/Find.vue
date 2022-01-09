@@ -7,6 +7,7 @@
         <option value="Necromancer">Necromancer</option>
     </select>
     <button @click="showResults"> Search </button>
+    <button @click="clearResults"> Clear Results</button>
     <p></p>
     <table id="tblResults" class="results">
         <th>Name </th>
@@ -16,7 +17,7 @@
         <th>Utility 2 </th>
         <th>Utility 3 </th>
         <th>Elite </th>
-        <tr>
+        <tr v-for="td in tds" :key="td">
             <td class="seps">{{ td.Name }}</td>
             <td class="seps">{{ td.Prof }}</td>
             <td>
@@ -69,18 +70,39 @@
         created: async function () {
             const routes = await fetch("http://localhost:5000/buildQuery");
             const gObject = await routes.json();
-            this.build = gObject;
+            this.build = JSON.parse(gObject);
             console.log(this.build);
             
         },
         methods: {
             showResults() {
-                let b = this.build;
-                console.log(b);
+                this.tds = []
+                let b = eval('(' + this.build + ')');
+                console.log("b is: " + b)
                 for (let i = 0; i < b.length; i++) {
-                    console.log(b[i]);
+                    console.log(i)
+                    console.log(b[i])
+                    const td = {
+                        Name: b[i].bName,
+                        Prof: b[i].bProf,
+                        Heal: b[i].bHeal,
+                        Utility1: b[i].bUtility1,
+                        Utility2: b[i].bUtility2,
+                        Utility3: b[i].bUtility3,
+                        Elite: b[i].bElite,
+                        imgHeal: b[i].bimgHeal,
+                        imgUtility1: b[i].bimgUtility1,
+                        imgUtility2: b[i].bimgUtility2,
+                        imgUtility3: b[i].bimgUtility3,
+                        imgElite: b[i].bimgElite,
+                    }
+                    console.log(b[i].Name)
+                    this.tds.push(td)
                 }
             },
+            clearResults() {
+                this.tds = []
+            }
         },
     }
 </script>

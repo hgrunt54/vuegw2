@@ -2,6 +2,7 @@
     <h1 class="h1">Find a Guild Wars 2 Build</h1>
     <label for="sel_prof"> Profession: </label>
     <select id="sel_prof" v-model='prof' v-on:change="profChange">
+        <option disabled value>Please Select One</option>
         <option value="All">All Builds</option>
         <option value="Mesmer">Mesmer</option>
         <option value="Necromancer">Necromancer</option>
@@ -49,7 +50,7 @@
         name: 'Find',
         data() {
             return {
-                build: {},
+                build: [],
                 td: {
                     Name: '',
                     Prof: '',
@@ -77,7 +78,7 @@
         methods: {
             showResults() {
                 this.tds = []
-                let b = eval('(' + this.build + ')');
+                let b = this.build;
                 console.log("b is: " + b)
                 for (let i = 0; i < b.length; i++) {
                     console.log(i)

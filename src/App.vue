@@ -1,18 +1,42 @@
 <template>
-    <Profession />
-    <Skills />
+    <div style="text-align: center; background-color: cadetblue">
+        <button @click='actCreate'>Create Build</button>
+        <button @click='actFind'>Find Build</button>
+    </div>
+    <div v-if="createActive">
+        <create />
+    </div>
+    <div v-if="findActive">
+        <find />
+    </div>
 </template>
 
 <script>
-    import Profession from './components/Profession.vue'
-    import Skills from './components/Skills.vue'
+    import Create from './components/Create.vue'
+    import Find from './components/Find.vue'
 
 export default {
-  name: 'App',
-  components: {
-      Profession,
-      Skills
-  }
+    name: 'App',
+        components: {
+            Create,
+            Find,
+        },
+        data: function() {
+            return {
+                createActive: true,
+                findActive: false,
+            }
+        },
+        methods: {
+            actCreate() {
+                this.createActive = true;
+                this.findActive = false;
+            },
+            actFind() {
+                this.createActive = false;
+                this.findActive = true;
+            }
+        },
 }
 </script>
 
@@ -23,6 +47,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

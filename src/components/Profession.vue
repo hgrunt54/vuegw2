@@ -1,38 +1,46 @@
 <template>
-  <div class="Profession">
-    <h1 class="h1">Create a Guild Wars 2 Build</h1>
-    <label for="name">Name: </label>
-      <input id="name" v-model="build.name" />
-    <label for="sel_prof">Profession: </label>
-      <select id="sel_prof" v-model="build.prof">
-          <option disabled value>Please Select One</option>
-          <option value="Mesmer">Mesmer</option>
-          <option value="Necromancer">Necromancer</option>
-      </select>
-    <p>
-        Build Name is: {{ this.build.name }}
-    </p>
-    <p>
-        Selected Profession is: {{ this.build.prof }}
-    </p>
-  </div>
+    <div class="Profession">
+        <h1 class="h1">Create a Guild Wars 2 Build</h1>
+        <label for="name">Name: </label>
+        <input id="name" v-model="name" v-on:change="nameChange"/>
+        <label for="sel_prof"> Profession: </label>
+        <select id="sel_prof" v-model='prof' v-on:change="profChange">
+            <option disabled value>Please Select One</option>
+            <option value="Mesmer">Mesmer</option>
+            <option value="Necromancer">Necromancer</option>
+        </select>
+        <label> Game Mode: </label>
+        <select>Coming Soon
+            <option>Coming Soon</option>
+        </select>
+        <p>
+            <label>Template Code: </label>
+            <input readonly value="Coming Soon" />
+        </p>
+
+    </div>
 </template>
 
 <script>
     export default {
         name: 'Profession',
-        data() {
+        data: function() {
             return {
-                build: {
-                    name: '',
-                    prof: '',
-                    bgColor: '',
-                }
+                name: '',
+                prof: '',
+                skills: {},
+            }
+        },
+        methods: {
+            nameChange() {
+                this.$emit('nameUpdate', this.name)
+            },
+            profChange() {
+                this.$emit('profUpdate', this.prof,
+                )
             }
         }
     }
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

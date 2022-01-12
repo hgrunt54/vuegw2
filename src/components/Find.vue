@@ -1,9 +1,8 @@
 <template>
     <h1 class="h1">Find a Guild Wars 2 Build</h1>
     <label for="sel_prof"> Profession: </label>
-    <select id="sel_prof" v-model='prof' v-on:change="profChange">
-        <option disabled value>Please Select One</option>
-        <option value="All">All Builds</option>
+    <select id="sel_prof" v-model='p'>
+        <option selected value="All">All Builds</option>
         <option value="Mesmer">Mesmer</option>
         <option value="Necromancer">Necromancer</option>
     </select>
@@ -43,6 +42,7 @@
             </td>
         </tr>
     </table>
+    <button @click="delBuilds" >Delete All Builds</button>
 </template>
 
 <script>
@@ -50,6 +50,7 @@
         name: 'Find',
         data() {
             return {
+                p: "",
                 build: [],
                 td: {
                     Name: '',
@@ -65,7 +66,8 @@
                     imgUtility3: require('@/assets/images/skills/default/default_skill.png'),
                     imgElite: require('@/assets/images/skills/default/default_skill.png'),
                 },
-                tds: []
+                tds: [],
+                delData: false, 
             }
         },
         created: async function () {
@@ -78,11 +80,11 @@
         methods: {
             showResults() {
                 this.tds = []
+                let prof = this.p
                 let b = this.build;
                 console.log("b is: " + b)
                 for (let i = 0; i < b.length; i++) {
-                    console.log(i)
-                    console.log(b[i])
+                    console.log(prof)
                     const td = {
                         Name: b[i].bName,
                         Prof: b[i].bProf,
@@ -97,12 +99,39 @@
                         imgUtility3: b[i].bimgUtility3,
                         imgElite: b[i].bimgElite,
                     }
-                    console.log(b[i].Name)
-                    this.tds.push(td)
+                    if (prof == "Mesmer") {
+                        if (td.Prof == "Mesmer") {
+                            this.tds.push(td)
+                        }
+                    }
+                    else if (prof == "Necromancer") {
+                        if (td.Prof == "Necromancer") {
+                            this.tds.push(td)
+                        }
+                    }
+                    else {
+                        this.tds.push(td)
+                    }
+                    console.log(this.tds)
                 }
             },
             clearResults() {
                 this.tds = []
+            },
+            delBuilds() {
+                this.delData = true;
+                console.log(this.delData)
+                fetch("http://localhost:5000/clearData", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                    },
+                    body: JSON.stringify(this.delData)
+                });
+                console.log(this.tds);
+                this.tds = []
+                this.build = []
+                console.log(this.tds);
             }
         },
     }

@@ -64,30 +64,11 @@
         props: {
             buildName: String,
             buildProf: String,
+            buildSkills: {}
         },
         data: function() {
             return {
-                skills: {
-                    heal: "",
-                    utility1: "",
-                    utility2: "",
-                    utility3: "",
-                    elite: "",
-                    img_Heal: require('@/assets/images/skills/default/default_skill.png'),
-                    img_Utility1: require('@/assets/images/skills/default/default_skill.png'),
-                    img_Utility2: require('@/assets/images/skills/default/default_skill.png'),
-                    img_Utility3: require('@/assets/images/skills/default/default_skill.png'),
-                    img_Elite: require('@/assets/images/skills/default/default_skill.png'),
-
-                    s1: '',
-                    s1_Image: require('@/assets/images/skills/default/default_skill.png'),
-                    s2: '',
-                    s2_Image: require('@/assets/images/skills/default/default_skill.png'),
-                    s3: 'default',
-                    s3_Image: require('@/assets/images/skills/default/default_skill.png'),
-                    s4: '',
-                    s4_Image: require('@/assets/images/skills/default/default_skill.png'),
-                },
+                skills: this.buildSkills,
                 skillSelection: false,
                 changeSkill: "",
                 clickedSkill: "",
@@ -223,6 +204,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    h1 {
+        background: lightgray;
+    }
+
     h3 {
         margin: 40px 0 0;
     }

@@ -9,6 +9,15 @@
             <option value="Mesmer">Mesmer</option>
             <option value="Necromancer">Necromancer</option>
         </select>
+        <label> Game Mode: </label>
+        <select>Coming Soon
+            <option>Coming Soon</option>
+        </select>
+        <p>
+            <label>Template Code: </label>
+            <input readonly value="Coming Soon" />
+        </p>
+
     </div>
 </template>
 
@@ -19,6 +28,7 @@
             return {
                 name: '',
                 prof: '',
+                skills: {},
             }
         },
         methods: {
@@ -26,7 +36,8 @@
                 this.$emit('nameUpdate', this.name)
             },
             profChange() {
-                this.$emit('profUpdate', this.prof)
+                this.$emit('profUpdate', this.prof,
+                )
             }
         }
     }

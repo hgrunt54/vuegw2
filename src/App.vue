@@ -25,8 +25,6 @@ export default {
             return {
                 createActive: true,
                 findActive: false,
-                greeting: 'Hello, Vue!',
-                flaskGreeting: '',
             }
         },
         methods: {
@@ -38,11 +36,6 @@ export default {
                 this.createActive = false;
                 this.findActive = true;
             }
-        },
-        created: async function () {
-            const routes = await fetch("http://localhost:5000/greeting");
-            const gObject = await routes.json();
-            this.flaskGreeting = gObject;
         },
 }
 </script>

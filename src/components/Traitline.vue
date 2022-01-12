@@ -2,21 +2,29 @@
     <div>
         <table style="background-color: #0a0a0f" >
             <tr>
-                <td><img src="require(@/assets/images/traits/default/default_traitline.png)" /></td>
-                <td><img src="require(@/assets/images/traits/default/minor_trait.png)" /></td>
+                <td><img src="require('@assets/images/traits/default/default_traitline.png')" /></td>
+                <td><img src="require('@/assets/images/traits/default/minor_trait.png')" /></td>
                 <td>
                     <table>
-                        <tr><td><img src="require(@/assets/images/traits/default/default_trait.png)" /></td></tr>
-                        <tr><td><img src="require(@/assets/images/traits/default/default_trait.png)" /></td></tr>
-                        <tr><td><img src="require(@/assets/images/traits/default/default_trait.png)" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
                     </table>
                 </td>
-                <td><img src="require(@/assets/images/traits/default/minor_trait.png)" /></td>
+                <td><img src="require('@/assets/images/traits/default/minor_trait.png')" /></td>
                 <td>
                     <table>
-                        <tr><td><img src="require(@/assets/images/traits/default/default_trait.png)" /></td></tr>
-                        <tr><td><img src="require(@/assets/images/traits/default/default_trait.png)" /></td></tr>
-                        <tr><td><img src="require(@/assets/images/traits/default/default_trait.png)" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                    </table>
+                </td>
+                <td><img src="require('@/assets/images/traits/default/minor_trait.png')" /></td>
+                <td>
+                    <table>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
+                        <tr><td><img src="require('@/assets/images/traits/default/default_trait.png')" /></td></tr>
                     </table>
                 </td>
             </tr>

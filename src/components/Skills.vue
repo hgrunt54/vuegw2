@@ -43,9 +43,6 @@
     </div>
 
     <div>
-        <h2 style="text-align: center;">The Current Build Is:</h2>
-        <p>Name: {{ buildName }}</p>
-        <p>Profession: {{ buildProf }}</p>
         <h2 style="text-align: center;">The Currently Selected Skills are:</h2>
         <p>Heal: {{ skills.heal }}</p>
         <p>Utility 1: {{ skills.utility1 }}</p>

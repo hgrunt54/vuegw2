@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="deets" style="border-style: outset;">
-        <BuildDetails :buildName="buildName" :buildProf="buildProf" />
+        <BuildDetails />
     </div>
 </template>
 

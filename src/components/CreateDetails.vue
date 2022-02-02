@@ -3,8 +3,8 @@
         <h1>Details Section Coming Soon!</h1>
         <div>
             <h2 style="text-align: center;">The Current Build Is:</h2>
-            <p>Name: {{ buildName }}</p>
-            <p>Profession: {{ buildProf }}</p>
+            <p>Name: </p>
+            <p>Profession: </p>
             <h2 style="text-align: center;">The Currently Selected Skills are:</h2>
             <p>Heal: </p>
             <p>Utility 1: </p>
@@ -18,10 +18,6 @@
 <script>
     export default {
         name: 'BuildDetails',
-        props: {
-            buildName: String,
-            buildProf: String,
-        },
     }
 </script>
 
